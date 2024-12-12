@@ -24,21 +24,26 @@ import {
   LearnMoreLinks,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
+import {useThemeStore} from './src/store/themeStore';
+import {themes} from './src/constants/themeConfig';
 
 type SectionProps = PropsWithChildren<{
   title: string;
 }>;
 
 function Section({children, title}: SectionProps): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
+  const {theme} = useThemeStore();
+  const currentTheme = themes[theme];
   return (
-    <View style={styles.sectionContainer}>
+    <View
+      style={[
+        styles.sectionContainer,
+        {backgroundColor: currentTheme.backgroundColor},
+      ]}>
       <Text
         style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
+          styles.sectionContainer,
+          {backgroundColor: currentTheme.textColor},
         ]}>
         {title}
       </Text>
@@ -46,7 +51,7 @@ function Section({children, title}: SectionProps): React.JSX.Element {
         style={[
           styles.sectionDescription,
           {
-            color: isDarkMode ? Colors.light : Colors.dark,
+            // color: isDarkMode ? Colors.light : Colors.dark,
           },
         ]}>
         {children}
