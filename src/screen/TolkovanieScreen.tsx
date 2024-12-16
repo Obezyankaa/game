@@ -1,12 +1,12 @@
 import {View, Text} from 'react-native';
 import React from 'react';
 
-const HistoryScreen = () => {
+const TolkovanieScreen = () => {
   return (
     <View>
-      <Text>HistoryScreen</Text>
+      <Text>TolkovanieScreen</Text>
     </View>
   );
 };
 
-export default HistoryScreen;
+export default TolkovanieScreen;

@@ -1,12 +1,12 @@
 import {View, Text} from 'react-native';
 import React from 'react';
 
-const TestScreen = () => {
+const ResultGadania = () => {
   return (
     <View>
-      <Text>TestScreen</Text>
+      <Text>ResultGadania</Text>
     </View>
   );
 };
 
-export default TestScreen;
+export default ResultGadania;

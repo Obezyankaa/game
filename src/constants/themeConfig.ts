@@ -4,13 +4,30 @@ export type ThemeType = 'morning' | 'day' | 'evening' | 'night';
 export interface Theme {
   backgroundColor: string;
   textColor: string;
+  iconbackgroundColor: string;
 }
 
 export const themes: Record<ThemeType, Theme> = {
-  morning: {backgroundColor: '#FFFAE3', textColor: '#333'},
-  day: {backgroundColor: '#FFF', textColor: '#000'},
-  evening: {backgroundColor: '#FBE7C6', textColor: '#333'},
-  night: {backgroundColor: '#2C3E50', textColor: '#FFF'},
+  morning: {
+    backgroundColor: 'orange',
+    textColor: '#333',
+    iconbackgroundColor: '#ADD8E6',
+  },
+  day: {
+    backgroundColor: 'green',
+    textColor: '#000',
+    iconbackgroundColor: '#87CEEB',
+  },
+  evening: {
+    backgroundColor: 'pink',
+    textColor: '#333',
+    iconbackgroundColor: '#FF7F50',
+  },
+  night: {
+    backgroundColor: 'black',
+    textColor: '#FFF',
+    iconbackgroundColor: '#000080',
+  },
 };
 
 export const getCurrentTheme = (): ThemeType => {

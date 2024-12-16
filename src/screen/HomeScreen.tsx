@@ -1,30 +1,27 @@
+/* eslint-disable react/no-unstable-nested-components */
 import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import GameScreen from './HistoryScreen';
-import TestScreen from './TestScreen';
 import IconWrapper from '../ui/setting/IconWrapper';
-
+import Home from '../components/Home';
 const Stack = createNativeStackNavigator();
 
 const HomeScreen = () => {
   return (
-    <Stack.Navigator>
-      <Stack.Screen
-        name="GameScreen"
-        component={GameScreen}
-        options={{
-          headerLeft: () => <IconWrapper iconType='question' />,
-          headerRight: () => <IconWrapper iconType="settings" />,
-        }}
-      />
-      <Stack.Screen
-        name="TestScreen"
-        component={TestScreen}
-        options={{
-          headerShown: false,
-        }}
-      />
-    </Stack.Navigator>
+    <>
+      <Stack.Navigator>
+        <Stack.Screen
+          name="GameScreen"
+          component={Home}
+          options={{
+            title: '',
+            headerTransparent: true, // Делает заголовок прозрачным
+            headerStyle: {backgroundColor: 'transparent'},
+            headerLeft: () => <IconWrapper iconType="question" />,
+            headerRight: () => <IconWrapper iconType="settings" />,
+          }}
+        />
+      </Stack.Navigator>
+    </>
   );
 };
 
