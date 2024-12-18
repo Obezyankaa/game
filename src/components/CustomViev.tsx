@@ -1,12 +1,30 @@
-import {View, Text} from 'react-native';
-import React from 'react';
+import {StyleSheet, View} from 'react-native';
+import React, {ReactNode} from 'react';
+import {useThemeStore} from '../store/themeStore';
+import {themes} from '../constants/themeConfig';
 
-const CustomViev = () => {
+interface CustomViewProps {
+  children: ReactNode;
+}
+
+const CustomView = ({children}: CustomViewProps) => {
+  const {theme} = useThemeStore();
+  const currentTheme = themes[theme];
   return (
-    <View>
-      <Text>CustomViev</Text>
+    <View
+      style={[
+        styles.container,
+        {backgroundColor: currentTheme.backgroundColor},
+      ]}>
+      {children}
     </View>
   );
 };
 
-export default CustomViev;
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+});
+
+export default CustomView;

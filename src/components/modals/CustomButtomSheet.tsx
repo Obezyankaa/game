@@ -1,29 +1,66 @@
-import React, { useMemo } from 'react';
-import {View, Text, StyleSheet} from 'react-native';
-import BottomSheet from '@gorhom/bottom-sheet';
-
+import React, {useCallback, useEffect, useRef} from 'react';
+import {Text, StyleSheet, View} from 'react-native';
+import {
+  BottomSheetBackdrop,
+  BottomSheetModal,
+  BottomSheetView,
+} from '@gorhom/bottom-sheet';
+import { useBottomSheetStore } from '../../store/useBottomSheetStore';
 
 const CustomButtomSheet = () => {
-  const shapPoints = useMemo(() => ['25%', '50%', '70%'], []);
+  const bottomSheetModalRef = useRef<BottomSheetModal>(null);
+
+  const {isOpen, title, content, close} = useBottomSheetStore();
+
+  const snapPoints = ['25%', '50%', '75%'];
+
+  const handleSheetChanges = useCallback(
+    (index: number) => {
+      if (index === -1) close(); // Закрыть, если модальное окно закрыто
+    },
+    [close],
+  );
+
+  const renderBackdrop = useCallback(
+    (props: any) => (
+      <BottomSheetBackdrop
+        appearsOnIndex={3}
+        disappearsOnIndex={-1}
+        {...props}
+      />
+    ),
+    [],
+  );
+
+  useEffect(() => {
+    if (isOpen) {
+      bottomSheetModalRef.current?.present();
+    } else {
+      bottomSheetModalRef.current?.close();
+    }
+  }, [isOpen]);
+
   return (
-    <View style={styles.container}>
-      <BottomSheet snapPoints={shapPoints}>
+    <BottomSheetModal
+      ref={bottomSheetModalRef}
+      snapPoints={snapPoints}
+      index={2}
+      onChange={handleSheetChanges}
+      enableContentPanningGesture={true}
+      backdropComponent={renderBackdrop}>
+      <BottomSheetView style={styles.contentContainer}>
         <View>
-          <Text>CustomButtomSheet</Text>
+          <Text>{title} 🎉</Text>
+          {content}
         </View>
-      </BottomSheet>
-    </View>
+      </BottomSheetView>
+    </BottomSheetModal>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: 'grey',
-  },
   contentContainer: {
     flex: 1,
-    padding: 36,
     alignItems: 'center',
   },
 });
