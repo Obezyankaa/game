@@ -24,9 +24,9 @@ const HomeScreen = () => {
                 iconType="question"
                 onPress={() =>
                   open(
-                    'Помощь',
+                    'Правила',
                     <React.Fragment>
-                      <Text>Это окно помощи!</Text>
+                      <Text>Это окно правил!</Text>
                     </React.Fragment>,
                   )
                 }

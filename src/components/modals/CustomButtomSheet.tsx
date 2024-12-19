@@ -1,11 +1,28 @@
 import React, {useCallback, useEffect, useRef} from 'react';
-import {Text, StyleSheet, View} from 'react-native';
 import {
   BottomSheetBackdrop,
   BottomSheetModal,
   BottomSheetView,
 } from '@gorhom/bottom-sheet';
-import { useBottomSheetStore } from '../../store/useBottomSheetStore';
+import {useBottomSheetStore} from '../../store/useBottomSheetStore';
+import CustomText from '../CustomText';
+import CrossIconWhite from '../../assets/CrossIconWhite';
+import {StyledView} from './styles';
+import {View} from 'react-native';
+
+const BottomSheetBackground = ({style}: any) => {
+  return (
+    <View
+      style={[
+        {
+          backgroundColor: 'white',
+          borderRadius: 40,
+        },
+        style,
+      ]}
+    />
+  );
+};
 
 const CustomButtomSheet = () => {
   const bottomSheetModalRef = useRef<BottomSheetModal>(null);
@@ -16,7 +33,9 @@ const CustomButtomSheet = () => {
 
   const handleSheetChanges = useCallback(
     (index: number) => {
-      if (index === -1) close(); // Закрыть, если модальное окно закрыто
+      if (index === -1) {
+        close();
+      }
     },
     [close],
   );
@@ -47,22 +66,18 @@ const CustomButtomSheet = () => {
       index={2}
       onChange={handleSheetChanges}
       enableContentPanningGesture={true}
-      backdropComponent={renderBackdrop}>
-      <BottomSheetView style={styles.contentContainer}>
-        <View>
-          <Text>{title} 🎉</Text>
-          {content}
-        </View>
+      handleIndicatorStyle={{width: 40}}
+      backdropComponent={renderBackdrop}
+      backgroundComponent={props => <BottomSheetBackground {...props} />}>
+      <BottomSheetView>
+        <StyledView>
+          <CustomText content={title} variant="title" />
+          <CrossIconWhite onPress={() => close()} />
+        </StyledView>
+        {content}
       </BottomSheetView>
     </BottomSheetModal>
   );
 };
-
-const styles = StyleSheet.create({
-  contentContainer: {
-    flex: 1,
-    alignItems: 'center',
-  },
-});
 
 export default CustomButtomSheet;
