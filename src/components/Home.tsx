@@ -11,10 +11,7 @@ const Home = () => {
   return (
     <>
       <SafeAreaView
-        style={[
-          styles.container,
-          {backgroundColor: currentTheme.backgroundColor},
-        ]}>
+        style={[styles.container, {backgroundColor: currentTheme.dark}]}>
         <Text>Home</Text>
       </SafeAreaView>
       <CustomButtomSheet />

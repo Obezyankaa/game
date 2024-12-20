@@ -35,10 +35,7 @@ const IconWrapper: React.FC<IconWrapperProps> = ({iconType, onPress}) => {
   return (
     <TouchableOpacity
       onPress={onPress}
-      style={[
-        styles.iconContainer,
-        {backgroundColor: currentTheme.iconbackgroundColor},
-      ]}>
+      style={[styles.iconContainer, {backgroundColor: currentTheme.gray}]}>
       {renderIcon()}
     </TouchableOpacity>
   );
@@ -49,7 +46,6 @@ const styles = StyleSheet.create({
     padding: 10,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: 'red',
     borderRadius: 50,
   },
 });

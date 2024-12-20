@@ -10,19 +10,27 @@ import {useBottomSheetStore} from '../../store/useBottomSheetStore';
 import CustomText from '../CustomText';
 import CrossIconWhite from '../../assets/CrossIconWhite';
 import {StyledView} from './styles';
-import {View} from 'react-native';
+import { View } from 'react-native';
+import { useThemeStore } from '../../store/themeStore';
+import { themes } from '../../constants/themeConfig';
 
-const BottomSheetBackground = ({style}: any) => (
-  <View
-    style={[
-      {
-        backgroundColor: 'white',
-        borderRadius: 40,
-      },
-      style,
-    ]}
-  />
-);
+
+const BottomSheetBackground = ({style}: any) => {
+  const {theme} = useThemeStore();
+  const currentTheme = themes[theme];
+
+  return (
+    <View
+      style={[
+        {
+          backgroundColor: currentTheme.dark,
+          borderRadius: 40,
+        },
+        style,
+      ]}
+    />
+  );
+};
 
 const RenderBackdrop = (props: any) => (
   <BottomSheetBackdrop appearsOnIndex={3} disappearsOnIndex={-1} {...props} />
