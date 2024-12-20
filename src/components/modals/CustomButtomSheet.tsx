@@ -1,3 +1,5 @@
+/* eslint-disable react/no-unstable-nested-components */
+/* eslint-disable react-native/no-inline-styles */
 import React, {useCallback, useEffect, useRef} from 'react';
 import {
   BottomSheetBackdrop,
@@ -10,26 +12,28 @@ import CrossIconWhite from '../../assets/CrossIconWhite';
 import {StyledView} from './styles';
 import {View} from 'react-native';
 
-const BottomSheetBackground = ({style}: any) => {
-  return (
-    <View
-      style={[
-        {
-          backgroundColor: 'white',
-          borderRadius: 40,
-        },
-        style,
-      ]}
-    />
-  );
-};
+const BottomSheetBackground = ({style}: any) => (
+  <View
+    style={[
+      {
+        backgroundColor: 'white',
+        borderRadius: 40,
+      },
+      style,
+    ]}
+  />
+);
+
+const RenderBackdrop = (props: any) => (
+  <BottomSheetBackdrop appearsOnIndex={3} disappearsOnIndex={-1} {...props} />
+);
 
 const CustomButtomSheet = () => {
   const bottomSheetModalRef = useRef<BottomSheetModal>(null);
 
-  const {isOpen, title, content, close} = useBottomSheetStore();
+  const {isOpen, title, count, content, close} = useBottomSheetStore();
 
-  const snapPoints = ['25%', '50%', '75%'];
+  const snapPoints = count ? [count] : ['25%', '50%', '75%'];
 
   const handleSheetChanges = useCallback(
     (index: number) => {
@@ -38,17 +42,6 @@ const CustomButtomSheet = () => {
       }
     },
     [close],
-  );
-
-  const renderBackdrop = useCallback(
-    (props: any) => (
-      <BottomSheetBackdrop
-        appearsOnIndex={3}
-        disappearsOnIndex={-1}
-        {...props}
-      />
-    ),
-    [],
   );
 
   useEffect(() => {
@@ -63,16 +56,16 @@ const CustomButtomSheet = () => {
     <BottomSheetModal
       ref={bottomSheetModalRef}
       snapPoints={snapPoints}
-      index={2}
+      index={1}
       onChange={handleSheetChanges}
       enableContentPanningGesture={true}
       handleIndicatorStyle={{width: 40}}
-      backdropComponent={renderBackdrop}
+      backdropComponent={RenderBackdrop}
       backgroundComponent={props => <BottomSheetBackground {...props} />}>
       <BottomSheetView>
         <StyledView>
           <CustomText content={title} variant="title" />
-          <CrossIconWhite onPress={() => close()} />
+          <CrossIconWhite onPress={close} />
         </StyledView>
         {content}
       </BottomSheetView>

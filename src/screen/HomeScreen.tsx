@@ -3,8 +3,8 @@ import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import IconWrapper from '../ui/setting/IconWrapper';
 import Home from '../components/Home';
-import { useBottomSheetStore } from '../store/useBottomSheetStore';
-import { Text } from 'react-native';
+import {useBottomSheetStore} from '../store/useBottomSheetStore';
+import {Text} from 'react-native';
 const Stack = createNativeStackNavigator();
 
 const HomeScreen = () => {
@@ -25,6 +25,7 @@ const HomeScreen = () => {
                 onPress={() =>
                   open(
                     'Правила',
+                    500,
                     <React.Fragment>
                       <Text>Это окно правил!</Text>
                     </React.Fragment>,
@@ -38,6 +39,7 @@ const HomeScreen = () => {
                 onPress={() =>
                   open(
                     'Настройки',
+                    400,
                     <React.Fragment>
                       <Text>Это окно настроек!</Text>
                     </React.Fragment>,
