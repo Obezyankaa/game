@@ -1,10 +1,11 @@
 /* eslint-disable react/no-unstable-nested-components */
 import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import IconWrapper from '../ui/setting/IconWrapper';
+import IconWrapper from '../ui/IconWrapper';
 import Home from '../components/Home';
 import {useBottomSheetStore} from '../store/useBottomSheetStore';
 import {Text} from 'react-native';
+import SettingComponent from '../components/SettingToggleSwitch/Setting';
 const Stack = createNativeStackNavigator();
 
 const HomeScreen = () => {
@@ -41,7 +42,7 @@ const HomeScreen = () => {
                     'Настройки',
                     400,
                     <React.Fragment>
-                      <Text>Это окно настроек!</Text>
+                      <SettingComponent/>
                     </React.Fragment>,
                   )
                 }

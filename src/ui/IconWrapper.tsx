@@ -1,11 +1,11 @@
 import React from 'react';
 import {TouchableOpacity, StyleSheet} from 'react-native';
-import SettingsIcon from './icon/SettingsIcon';
-import ShareIcon from './icon/SgareIcon';
-import QuestionIcon from './icon/QuestionIcon';
-import BackArrowIcon from './icon/BackArrowIcon';
-import {useThemeStore} from '../../store/themeStore';
-import {themes} from '../../constants/themeConfig';
+import SettingsIcon from '../assets/SettingsIcon';
+import ShareIcon from '../assets/SgareIcon';
+import QuestionIcon from '../assets/QuestionIcon';
+import BackArrowIcon from '../assets/BackArrowIcon';
+import {useThemeStore} from '../store/themeStore';
+import {themes} from '../constants/themeConfig';
 
 // Определение типов пропсов
 interface IconWrapperProps {

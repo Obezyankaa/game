@@ -14,7 +14,7 @@ export const themes: Record<ThemeType, Theme> = {
     iconbackgroundColor: '#ADD8E6',
   },
   day: {
-    backgroundColor: 'green',
+    backgroundColor: '#11215B',
     textColor: '#000',
     iconbackgroundColor: '#87CEEB',
   },
