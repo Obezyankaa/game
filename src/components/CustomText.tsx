@@ -38,7 +38,6 @@ const styles = StyleSheet.create({
     fontSize: 24,
     lineHeight: 30,
     fontWeight: '600',
-    color: '#333',
   },
   subtitle: {
     fontSize: 18,

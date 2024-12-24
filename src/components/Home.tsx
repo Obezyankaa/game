@@ -3,6 +3,7 @@ import React from 'react';
 import {useThemeStore} from '../store/themeStore';
 import {themes} from '../constants/themeConfig';
 import CustomButtomSheet from './modals/CustomButtomSheet';
+import CustomBottomSheet2 from './modals/CustomBottomSheet2';
 
 const Home = () => {
   const {theme} = useThemeStore();
@@ -15,6 +16,7 @@ const Home = () => {
         <Text>Home</Text>
       </SafeAreaView>
       <CustomButtomSheet />
+      <CustomBottomSheet2 />
     </>
   );
 };

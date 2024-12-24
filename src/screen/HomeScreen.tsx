@@ -9,7 +9,7 @@ import SettingComponent from '../components/SettingToggleSwitch/Setting';
 const Stack = createNativeStackNavigator();
 
 const HomeScreen = () => {
-  const {open} = useBottomSheetStore();
+  const { open1 } = useBottomSheetStore();
   return (
     <>
       <Stack.Navigator>
@@ -24,7 +24,7 @@ const HomeScreen = () => {
               <IconWrapper
                 iconType="question"
                 onPress={() =>
-                  open(
+                  open1(
                     'Правила',
                     500,
                     <React.Fragment>
@@ -38,11 +38,11 @@ const HomeScreen = () => {
               <IconWrapper
                 iconType="settings"
                 onPress={() =>
-                  open(
+                  open1(
                     'Настройки',
                     400,
                     <React.Fragment>
-                      <SettingComponent/>
+                      <SettingComponent />
                     </React.Fragment>,
                   )
                 }

@@ -3,20 +3,17 @@ import React from 'react';
 import {useBottomSheetStore} from '../../store/useBottomSheetStore';
 
 const SettingComponent = () => {
-  const {open} = useBottomSheetStore();
+  const {open2} = useBottomSheetStore();
 
   return (
     <View>
-      <Text>SettingComponent</Text>
+      <Text>Здесь контент первой модалки</Text>
       <Button
-        title="переход на другую модалку"
-        onPress={() => open(
-          'Оформление',
-          650,
-          <View>
-            <Text>Другая модалка</Text>
-          </View>,
-        )}/>
+        title="Открыть вторую"
+        onPress={() =>
+          open2('Вторая модалка', 650, <Text>Содержимое второй модалки</Text>)
+        }
+      />
     </View>
   );
 };
