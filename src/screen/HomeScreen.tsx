@@ -27,9 +27,7 @@ const HomeScreen = () => {
                   open1(
                     'Правила',
                     500,
-                    <React.Fragment>
                       <Text>Это окно правил!</Text>
-                    </React.Fragment>,
                   )
                 }
               />
@@ -41,9 +39,7 @@ const HomeScreen = () => {
                   open1(
                     'Настройки',
                     400,
-                    <React.Fragment>
                       <SettingComponent />
-                    </React.Fragment>,
                   )
                 }
               />

@@ -1,17 +1,20 @@
 import {View, Text, Button} from 'react-native';
 import React from 'react';
 import {useBottomSheetStore} from '../../store/useBottomSheetStore';
+import SwitchWrapper from '../../ui/SwitchWraper';
+import ThemeSwitchContainer from './theme/ThemeSwitch';
 
 const SettingComponent = () => {
   const {open2} = useBottomSheetStore();
 
   return (
     <View>
-      <Text>Здесь контент первой модалки</Text>
+      <SwitchWrapper text="Вибрация" />
+      <SwitchWrapper text="Музыка" />
       <Button
-        title="Открыть вторую"
+        title="Оформление"
         onPress={() =>
-          open2('Вторая модалка', 650, <Text>Содержимое второй модалки</Text>)
+          open2('Оформление', 650, <ThemeSwitchContainer />)
         }
       />
     </View>

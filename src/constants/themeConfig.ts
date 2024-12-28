@@ -32,7 +32,7 @@ export const themes: Record<ThemeType, Theme> = {
   },
   darkRed: {
     white: '#EDEDED',
-    dark: '#FFFFFF',
+    dark: '#567527',
     gray: '#FFFFFF',
     gray2: '#FFFFFF',
     fig: '#FFFFFF',
