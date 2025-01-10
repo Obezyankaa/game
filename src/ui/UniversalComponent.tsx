@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
 import {View, Text, Switch, StyleSheet, TouchableOpacity} from 'react-native';
 import ArrowWhiteIcon from '../assets/arrow-white';
-import { useThemeStore } from '../store/themeStore';
-import { themes } from '../constants/themeConfig';
+import {useThemeStore} from '../store/themeStore';
+import {themes} from '../constants/themeConfig';
 
 interface UniversalComponentProps {
   text?: string; // Текст для отображения
@@ -19,9 +19,9 @@ const UniversalComponent: React.FC<UniversalComponentProps> = ({
   onToggle,
   onPress,
 }) => {
-    const [isEnabled, setIsEnabled] = useState(initialValue);
-    const {theme} = useThemeStore();
-    const currentTheme = themes[theme];
+  const [isEnabled, setIsEnabled] = useState(initialValue);
+  const {theme} = useThemeStore();
+  const currentTheme = themes[theme];
 
   const handleToggle = (value: boolean) => {
     setIsEnabled(value);
@@ -33,16 +33,17 @@ const UniversalComponent: React.FC<UniversalComponentProps> = ({
   const isSwitchComponent = !!onToggle; // Если передан обработчик onToggle – показываем Switch
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, {backgroundColor: currentTheme.gray}]}>
       {isSwitchComponent ? (
         <View style={styles.switchContainer}>
           <Text style={styles.text}>{text || 'Текст не передан'}</Text>
-          <Switch
-            value={isEnabled}
-            onValueChange={handleToggle}
-            thumbColor={isEnabled ? '#f5dd4b' : '#f4f3f4'}
-            trackColor={{false: '#767577', true: '#81b0ff'}}
-          />
+          <View style={styles.switchWrap}>
+            <Switch
+              value={isEnabled}
+              onValueChange={handleToggle}
+              style={styles.switch}
+            />
+          </View>
         </View>
       ) : (
         <TouchableOpacity style={styles.buttonContainer} onPress={onPress}>
@@ -56,14 +57,12 @@ const UniversalComponent: React.FC<UniversalComponentProps> = ({
 
 const styles = StyleSheet.create({
   container: {
-    padding: 10,
-    backgroundColor: '#fff',
-    borderRadius: 5,
-    shadowColor: '#000',
-    shadowOffset: {width: 0, height: 2},
-    shadowOpacity: 0.1,
-    shadowRadius: 4,
-    elevation: 3,
+    paddingTop: 10,
+    paddingBottom: 10,
+    paddingLeft: 20,
+    paddingRight: 20,
+    marginTop: 1,
+    marginBottom: 1,
   },
   switchContainer: {
     flexDirection: 'row',
@@ -78,6 +77,15 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 16,
     color: '#333',
+  },
+  switchWrap: {
+    width: 60, // ширина кастомной оболочки
+    height: 40, // высота контейнера
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  switch: {
+    transform: [{scaleX: 1}, {scaleY: 1}], // увеличение размера самого Switch
   },
 });
 
