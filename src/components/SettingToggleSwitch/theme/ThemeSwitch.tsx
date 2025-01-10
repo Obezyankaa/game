@@ -1,12 +1,16 @@
-import {View, Text, SafeAreaView, ScrollView} from 'react-native';
+import {SafeAreaView} from 'react-native';
 import React from 'react';
-import SwitchWrapper from '../../../ui/SwitchWraper';
 import CheckBoxTheme from './CheckBoxTheme';
+import UniversalComponent from '../../../ui/UniversalComponent';
 
 const ThemeSwitchContainer = () => {
   return (
     <SafeAreaView>
-      <SwitchWrapper text="Автоматическое" />
+      <UniversalComponent
+        text="Автоматическое"
+        initialValue={false}
+        onToggle={value => console.log('Switch toggled:', value)}
+      />
       <CheckBoxTheme />
     </SafeAreaView>
   );

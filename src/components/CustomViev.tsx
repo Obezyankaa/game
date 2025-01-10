@@ -11,11 +11,7 @@ const CustomView = ({children}: CustomViewProps) => {
   const {theme} = useThemeStore();
   const currentTheme = themes[theme];
   return (
-    <View
-      style={[
-        styles.container,
-        {backgroundColor: currentTheme.backgroundColor},
-      ]}>
+    <View style={[styles.container, {backgroundColor: currentTheme.gray}]}>
       {children}
     </View>
   );
