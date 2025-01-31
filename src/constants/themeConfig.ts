@@ -23,7 +23,7 @@ export const themes: Record<ThemeType, Theme> = {
   },
   pink: {
     white: '#FFF5F9',
-    dark: '#5C4642',
+    dark: '#FFFFFF',
     gray: '#FFFFFF',
     gray2: '#FFFFFF',
     fig: '#FFFFFF',
